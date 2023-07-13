@@ -1,0 +1,10 @@
+server:
+  port: 8888
+datasource:
+  driverName: mysql
+  host: 124.70.130.79
+  port: 3306
+  database: eden
+  username: root
+  password: eden
+  charset: utf8
