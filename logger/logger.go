@@ -28,7 +28,7 @@ const (
 )
 
 // Setup initialize the log instance
-func Setup() {
+func Init() {
 	logger = log.New(os.Stdout, DefaultPrefix, log.Ldate|log.Ltime|log.Lmicroseconds|log.Lmsgprefix)
 }
 
