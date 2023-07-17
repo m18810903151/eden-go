@@ -7,17 +7,14 @@ import (
 	"github.com/gin-gonic/gin/binding"
 )
 
-func InitRouter() *gin.Engine {
-	r := gin.Default()
+func InitRouter(r *gin.Engine) {
+
 	v1 := r.Group("/api/v1")
 
 	user := v1.Group("user")
 	{
 		user.POST("/login", Bind(Login, binding.JSON))
-		user.GET("/:id", Bind(GetUserById, binding.Uri))
+		user.GET("/:id", BindUri(GetUserById))
 
 	}
-
-	return r
-
 }
