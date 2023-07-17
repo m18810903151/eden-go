@@ -14,7 +14,7 @@ func InitRouter() *gin.Engine {
 	user := v1.Group("user")
 	{
 		user.POST("/login", Bind(Login, binding.JSON))
-		user.GET("/getById", Bind(GetUserById, binding.Query))
+		user.GET("/:id", Bind(GetUserById, binding.Uri))
 
 	}
 

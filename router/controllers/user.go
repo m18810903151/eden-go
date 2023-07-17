@@ -8,7 +8,7 @@ import (
 )
 
 type Id struct {
-	Id int64 `json:"id" form:"id"  binding:"required"`
+	Id int64 `uri:"id" form:"id"  binding:"required"`
 }
 
 func GetUserById(c *gin.Context, id *Id) Response {
