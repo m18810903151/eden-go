@@ -1,7 +1,7 @@
 package routers
 
 import (
-	. "eden/controller/login"
+	. "eden/controller/user"
 	"github.com/gin-gonic/gin"
 )
 

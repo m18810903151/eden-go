@@ -1,4 +1,4 @@
-package login
+package user
 
 import (
 	"eden/common"
@@ -22,7 +22,7 @@ type LoginParam struct {
 
 // LoginResp 登录响应
 type LoginResp struct {
-	Token string `json:"token"`
+	AccessToken string `json:"accessToken"`
 }
 
 // EdenClaims claim
