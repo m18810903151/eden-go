@@ -6,10 +6,10 @@ import (
 
 // Response 自定义相应结构体
 type Response struct {
-	Code      int
-	Msg       string
-	Data      any
-	RequestId string
+	Code    int    `json:"code"`
+	Msg     string `json:"msg"`
+	Data    any    `json:"data"`
+	TraceId string `json:"traceId"`
 }
 
 const (

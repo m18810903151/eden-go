@@ -1,0 +1,13 @@
+app:
+  port: 8888
+  mode: release
+  name: eden
+mysql:
+  conn: root:eden@tcp(124.70.130.79:3306)/eden?charset=utf8&parseTime=true
+
+logger:
+  filename: app.log
+  maxsize: 500
+  maxbackups: 20
+  maxage: 30
+  level: DEBUG

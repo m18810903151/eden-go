@@ -1,6 +1,7 @@
 package serializer
 
 import (
+	"eden/common"
 	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/gin/binding"
 	"net/http"
@@ -21,11 +22,14 @@ func Bind[T any](call func(*gin.Context, *T) Response, bind ...binding.Binding) 
 		}
 
 		if err != nil {
-			c.JSON(http.StatusOK, Fail(err.Error()))
+			resp := Fail(err.Error())
+			resp.TraceId = c.GetString(common.TraceKey)
+			c.JSON(http.StatusOK, resp)
 			return
 		}
-
-		c.JSON(http.StatusOK, call(c, instance))
+		resp := call(c, instance)
+		resp.TraceId = c.GetString(common.TraceKey)
+		c.JSON(http.StatusOK, resp)
 	}
 }
 
@@ -36,10 +40,13 @@ func BindUri[T any](call func(*gin.Context, *T) Response) func(c *gin.Context) {
 		var instance = new(T)
 		err = c.ShouldBindUri(instance)
 		if err != nil {
-			c.JSON(http.StatusOK, Fail(err.Error()))
+			resp := Fail(err.Error())
+			resp.TraceId = c.GetString(common.TraceKey)
+			c.JSON(http.StatusOK, resp)
 			return
 		}
-
-		c.JSON(http.StatusOK, call(c, instance))
+		resp := call(c, instance)
+		resp.TraceId = c.GetString(common.TraceKey)
+		c.JSON(http.StatusOK, resp)
 	}
 }
